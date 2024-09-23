@@ -29,6 +29,26 @@ public class Diameter {
         int selfdia = lh+rh+1;
         return Math.max(selfdia, Math.max(leftdia,rightdia));
     }
+    static class Info{
+        int dia;
+        int ht;
+        public Info(int dia, int ht){
+            this.dia = dia;
+            this.ht = ht;
+        }
+    }
+    public static Info Treedia(Node root){
+        if(root == null){
+            return new Info(0,0);
+        }
+        Info leftinfo = Treedia(root.left);
+        Info rightinfo = Treedia(root.right);
+
+        int selfdia = Math.max(Math.max(leftinfo.dia,rightinfo.dia),leftinfo.ht+rightinfo.ht+1);
+        int ht = Math.max(leftinfo.ht,rightinfo.ht)+1;
+
+        return new Info(selfdia,ht);
+    }
     
     public static void main(String args[]){
 
@@ -47,6 +67,6 @@ public class Diameter {
         root.left.right = new Node(5);
         root.right.left = new Node(6);
         root.right.right = new Node(7);
-        System.out.println(diaofTree(root));
+        System.out.println(Treedia(root).dia);
     }
 }
