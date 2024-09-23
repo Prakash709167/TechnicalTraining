@@ -17,6 +17,7 @@ public class Diameter {
         int rh = Height(root.right);
         return Math.max(lh,rh)+1;
     }
+    // =============== Approach 1 start ======================
     public static int diaofTree(Node root){
         if(root == null){
             return 0;
@@ -29,6 +30,11 @@ public class Diameter {
         int selfdia = lh+rh+1;
         return Math.max(selfdia, Math.max(leftdia,rightdia));
     }
+        // =============== Approach 1 End ======================
+
+
+        // =============== Approach 2 start ======================
+
     static class Info{
         int dia;
         int ht;
@@ -49,6 +55,9 @@ public class Diameter {
 
         return new Info(selfdia,ht);
     }
+
+        // =============== Approach 2 End ======================
+
     
     public static void main(String args[]){
 
